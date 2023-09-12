@@ -1,7 +1,6 @@
 import React from "react";
-import Box from "@mui/material/Box";
-
+import Layout from "../layout/Layout";
 
 export default function Home() {
-  return <Box> Mason's working on it! </Box>;
+  return <Layout />;
 }
