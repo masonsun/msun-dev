@@ -13,7 +13,7 @@ const Rig = () => {
   })
 };
 
-const Clouds = () => {
+const CloudsCanvas = () => {
   return (
     <Canvas camera={{ position: [0, 0, 16], fov: 75 }}>
       <ambientLight intensity={2} />
@@ -38,4 +38,4 @@ const Clouds = () => {
   )
 };
 
-export default Clouds;
+export default CloudsCanvas;
