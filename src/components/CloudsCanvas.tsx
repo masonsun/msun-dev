@@ -21,8 +21,8 @@ const CloudsCanvas = () => {
       <Suspense>
         <Cloud position={[-4, -2, -25]} speed={0.2} opacity={1}/>
         <Cloud position={[4, 2, -15]} speed={0.2} opacity={0.5} />
-        <Cloud position={[4, -2, 0]} speed={0.2} opacity={0.5} />
-        <Cloud position={[4, 2, 0]} speed={0.2} opacity={0.25} />
+        <Cloud position={[4, -2, -2]} speed={0.2} opacity={0.5} />
+        <Cloud position={[4, 2, -2]} speed={0.2} opacity={0.25} />
         <Cloud position={[-10, -2, -15]} speed={0.2} opacity={1} />
       </Suspense>
       <Sky 
