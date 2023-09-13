@@ -1,30 +1,13 @@
-# Hyperplane landing page
-We are live at:
-- https://hyperplane-data.web.app
-- https://hyperplanedata.com
+# Overview
+Source code for my personal website [msun.dev](https://msun.dev). Disclaimer, I'm a web dev noob.
 
-## Local dev
+# Local dev
 ```sh
-# interactive/auto-reloads (localhost:3000)
-yarn dev
-```
+yarn dev         # interactive/auto-reloads at localhost:3000
+yarn build       # build
+yarn start       # serve built artifacts locally
+yarn export      # export files for static hosting
 
-## Local builds
-```sh
-# Build
-yarn build
-
-# Serve built artifacts locally
-yarn start
-
-# Export files for static hosting
-yarn export 
-
-# Firebase hosting (localhost:5002)
-firebase serve
-```
-
-## Hotfix deploy
-```sh
-firebase deploy
+firebase serve   # hosting at localhost:5002
+firebase deploy  # hotfix on live
 ```
