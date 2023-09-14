@@ -1,23 +1,20 @@
-import { createTheme } from '@mui/material/styles';
-
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
-      main: 'rgb(121, 134, 203)', // logo light color
-      light: 'rgb(121, 134, 203)', // logo light color
-      dark: 'rgb(26, 35, 126)', // logo dark color
+      main: "#e1f5fe",
     },
     background: {
-      default: 'rgb(242, 243, 245)',
-      paper: 'rgb(255, 255, 255)',
+      default: "rgb(242, 243, 245)",
+      paper: "rgb(255, 255, 255)",
     },
     text: {
-      primary: 'rgb(60, 60, 60)',
-      secondary: 'rgb(123, 132, 140)',
+      primary: "rgb(60, 60, 60)",
+      secondary: "rgb(123, 132, 140)",
     },
-    divider: 'rgb(197, 197, 197)',
+    divider: "rgb(197, 197, 197)",
   },
   typography: {
     button: {
@@ -30,32 +27,32 @@ const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightBold: 600,
     h1: {
-      fontSize: '3.00rem',
+      fontSize: "3.00rem",
       fontWeight: 600,
       lineHeight: 1.25,
     },
     h2: {
-      fontSize: '1.75rem',
+      fontSize: "1.75rem",
       fontWeight: 600,
       lineHeight: 1.25,
     },
     h3: {
-      fontSize: '1.5rem',
+      fontSize: "1.5rem",
       fontWeight: 600,
       lineHeight: 1.25,
     },
     h4: {
-      fontSize: '1.25rem',
+      fontSize: "1.25rem",
       fontWeight: 500,
       lineHeight: 1.25,
     },
     h5: {
-      fontSize: '1.0625rem',
+      fontSize: "1.0625rem",
       fontWeight: 500,
       lineHeight: 1.25,
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: "1rem",
       fontWeight: 500,
       lineHeight: 1.25,
     },

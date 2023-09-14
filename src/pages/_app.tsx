@@ -1,15 +1,16 @@
-import React, { useEffect, ReactElement, ReactNode } from "react";
-
 import Head from "next/head";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
+import React, { useEffect, ReactElement, ReactNode } from "react";
 
+// CSS
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-
-import '../theme/styles.css';
 import theme from "../theme/theme";
-import Config from "../config/config.json";
+import "../theme/styles.css";
+
+// Configs
+import Content from "../config/content.json";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -27,7 +28,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       // Remove server-side injected CSS if it exists
       jssStyles.parentElement!.removeChild(jssStyles);
     }
-
   }, []);
 
   // Set-up for page-specific layouts
@@ -35,7 +35,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const layout = getLayout(<Component {...pageProps} />);
 
   // Load web content from config
-  const { meta, title, icons } = Config;
+  const { meta, title, icons } = Content;
 
   return (
     <>
