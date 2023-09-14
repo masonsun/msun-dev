@@ -13,11 +13,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@firebase/analytics": "^0.10.0",
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
     "@next/font": "13.4.12",
     "@react-three/drei": "^9.83.8",
     "@react-three/fiber": "^8.14.1",
+    "@react-three/postprocessing": "^2.15.1",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
@@ -28,6 +30,7 @@
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+    "styled-components": "^6.0.7",
     "three": "^0.156.1",
     "typescript": "5.1.6",
     "valtio": "^1.11.2"
