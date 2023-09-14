@@ -40,15 +40,19 @@ function AquariumWithoutSpheres({ spheres }) {
         <Instances renderOrder={-1000}>
           <sphereGeometry args={[1, 64, 64]} />
           <meshBasicMaterial depthTest={false} />
-          {spheres.map(([scale, color, speed, position], index) => (
-            <Sphere
-              key={index}
-              scale={scale}
-              color={color}
-              speed={speed}
-              position={position}
-            />
-          ))}
+          
+          {
+            // @ts-ignore
+            spheres.map(([scale, color, speed, position], index) => (
+              <Sphere
+                key={index}
+                scale={scale}
+                color={color}
+                speed={speed}
+                position={position}
+              />
+            ))
+          }
         </Instances>
       </Aquarium>
       {/** Custom environment map */}
@@ -94,15 +98,15 @@ function AquariumWithoutSpheres({ spheres }) {
   );
 }
 
+// @ts-ignore
 function Aquarium({ children, ...props }) {
   const ref = useRef();
+  // @ts-ignore
   const { nodes } = useGLTF("glb/glass-box.glb");
   const stencil = useMask(1, false);
   useLayoutEffect(() => {
-    // Apply stencil to all contents
-    ref.current.traverse(
-      (child) => child.material && Object.assign(child.material, { ...stencil })
-    );
+    // @ts-ignore
+    ref.current.traverse((child) => child.material && Object.assign(child.material, { ...stencil }));
   }, []);
   return (
     <group {...props} dispose={null}>
@@ -130,14 +134,17 @@ function Aquarium({ children, ...props }) {
   );
 }
 
+// @ts-ignore
 function Sphere({ position, scale = 1, speed = 0.1, color = "black" }) {
   return (
     <Float rotationIntensity={40} floatIntensity={20} speed={speed / 2}>
+      {/* @ts-ignore */}
       <Instance position={position} scale={scale} color={color} />
     </Float>
   );
 }
 
+// @ts-ignore
 function OneSpinningObject(props) {
   const { scene, animations } = useGLTF("glb/tennis-ball.glb");
   const { actions, mixer } = useAnimations(animations, scene);

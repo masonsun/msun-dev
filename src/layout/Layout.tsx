@@ -5,7 +5,6 @@ import { Box, Grid, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import CloudsCanvas from "../components/objects/CloudsCanvas";
-import BananasCanvas from "../components/objects/BananasCanvas";
 import GlassBox from "../components/objects/GlassBox";
 
 import HeroText from "../components/HeroText";
