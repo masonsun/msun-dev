@@ -10,7 +10,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { useTheme } from "@mui/material";
 
+import Clock from "./Clock";
 import SocialMediaStack from "../config/socialMediaLinks.json";
 
 // @ts-ignore
@@ -28,6 +30,7 @@ function HideOnScroll(props) {
 }
 
 export default function DrawerAppBar() {
+  const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -62,7 +65,9 @@ export default function DrawerAppBar() {
 
       {/* Bottom span */}
       <Box component="div" sx={{ padding: 1, textAlign: "center" }}>
-        <Typography sx={{ fontSize: 11 }}>Created by Mason Sun</Typography>
+        <Typography sx={{ fontSize: 11 }}>
+          <Clock />
+        </Typography>
       </Box>
     </>
   );
@@ -137,7 +142,7 @@ export default function DrawerAppBar() {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: 100,
-              backgroundColor: "rgba(0,0,0,0)",
+              backgroundColor: theme.palette.primary.main,
             },
           }}
         >
