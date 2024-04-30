@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { NextPage } from "next";
+import { useRouter } from 'next/router';
 import type { AppProps } from "next/app";
 import React, { useEffect, ReactElement, ReactNode } from "react";
 
@@ -11,6 +12,7 @@ import "../theme/styles.css";
 
 // Configs
 import Content from "../config/content.json";
+import Analytics from "../config/analytics.json";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,6 +23,20 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  // Tracking code for Google Analytics
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = url => {
+      window.gtag('config', Analytics.googleMeasurementId as string, {
+        page_path: url,
+      });
+    }
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    }
+  }, [router.events]);
+
   // Animate on scroll functionality
   useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -40,15 +56,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       <Head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMT3GVS482"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-MMT3GVS482');
-        </script>
-
         {/* Metadata */}
         <meta charSet={meta.charset} />
         <meta name="description" content={meta.description} />
