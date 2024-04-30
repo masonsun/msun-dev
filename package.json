@@ -34,5 +34,8 @@
     "three": "^0.156.1",
     "typescript": "5.1.6",
     "valtio": "^1.11.2"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.19"
   }
 }
