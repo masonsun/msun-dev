@@ -40,6 +40,15 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       <Head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMT3GVS482"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMT3GVS482');
+        </script>
+
         {/* Metadata */}
         <meta charSet={meta.charset} />
         <meta name="description" content={meta.description} />
