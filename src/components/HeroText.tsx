@@ -57,7 +57,7 @@ export function HeroText() {
   const state = useProxy(store);
   return (
     <div className="blurb">
-      <img src="icons/colored/android-bot-100.svg" />
+      <img src="imgs/head.svg" height="200px" />
       <MotionBlurb open={state.open}>
         <h3>Hello there!</h3>
         <h4>Welcome to Mason's corner on the internet.</h4>
