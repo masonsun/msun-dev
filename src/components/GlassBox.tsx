@@ -1,4 +1,5 @@
 import { useLayoutEffect, useEffect, useRef } from "react";
+import { useTheme } from "@mui/material";
 import { Canvas, useFrame } from "@react-three/fiber";
 
 import {
@@ -14,20 +15,18 @@ import {
 import {
   Lightformer,
   Environment,
-  RandomizedLight,
-  AccumulativeShadows,
   MeshTransmissionMaterial,
 } from "@react-three/drei";
 
-
 // @ts-ignore
 function AquariumWithoutSpheres({ spheres }) {
+  const theme = useTheme();
   return (
     <Canvas
       shadows
-      camera={{ position: [30, 0, -3], fov: 35, near: 1, far: 50 }}
+      camera={{ position: [40, 0, 0], fov: 35, near: 1, far: 50 }}
     >
-      <color attach="background" args={["#e1f5fe"]} />
+      <color attach="background" args={[theme.palette.primary.light]} />
       {/** Glass aquarium */}
       <Aquarium position={[0, 0.25, 0]}>
         <Float rotationIntensity={2} floatIntensity={10} speed={2}>
@@ -40,7 +39,6 @@ function AquariumWithoutSpheres({ spheres }) {
         <Instances renderOrder={-1000}>
           <sphereGeometry args={[1, 64, 64]} />
           <meshBasicMaterial depthTest={false} />
-          
           {
             // @ts-ignore
             spheres.map(([scale, color, speed, position], index) => (
@@ -106,7 +104,9 @@ function Aquarium({ children, ...props }) {
   const stencil = useMask(1, false);
   useLayoutEffect(() => {
     // @ts-ignore
-    ref.current.traverse((child) => child.material && Object.assign(child.material, { ...stencil }));
+    ref.current.traverse(
+      (child) => child.material && Object.assign(child.material, { ...stencil })
+    );
   }, []);
   return (
     <group {...props} dispose={null}>
@@ -169,8 +169,8 @@ export default function GlassBox() {
         [2, "skyblue", 0.3, [-4, 2, -4]],
         [1.5, "orange", 0.05, [-4, -1, -1]],
         [2, "lightblue", 0.1, [-4, 2, -2]],
-        [1.5, "aquamarine", 0.2, [4, -3, 2]],
-        [1.25, "lightblue", 0.3, [-4, -2, -3]],
+        [1.5, "pink", 0.2, [4, -3, 2]],
+        [1.25, "aquamarine", 0.3, [-4, -2, -3]],
         [1, "skyblue", 0.3, [-4, 2, -4]],
       ]}
     />

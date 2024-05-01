@@ -1,39 +1,40 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { useTheme, Box, Grid, CssBaseline } from "@mui/material";
 
-import { Box, Grid } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-
-import GlassBox from "../components/GlassBox";
-import HeroText from "../components/HeroText";
-import DrawerAppBar from "../components/DrawerAppBar";
 import BackToTopButton from "../components/BackToTopButton";
 import Copyright from "../components/Copyright";
+import Navigation from "../components/Navigation";
 
 const BaseLayout = ({ children }) => {
+  const theme = useTheme();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <>
-      <CssBaseline />  
-      <Box component="div" id="page-top" sx = {{ backgroundColor: "#e1f5fe" }}>
-        <DrawerAppBar />
-
-          
-        <Grid container sx={{ position: "static", height: "100vh" }}>
-          <Grid item md={8} xs={12}>
-
-          </Grid>
-          <Grid item md={4} xs={12}>
-            <GlassBox />
-          </Grid>
-  
-
-        </Grid>
+      <CssBaseline />
+      <Box
+        component="div"
+        id="page-top"
+        sx={{
+          backgroundColor: theme.palette.primary.light,
+          height: "100vh",
+          padding: 5,
+        }}
+      >
         <Grid container>
-          <Grid item xs={12} sx={{ position: "absolute", top: "50%", left: "50%", width: "400px" }}>
-            <HeroText />
+          <Grid xs={12}>
+            <Navigation toggleSidebar={() => setIsSidebarOpen(true)} />
           </Grid>
         </Grid>
-        <Copyright />
+
+        {children}
+
+        <Grid container>
+          <Grid xs={12}>
+            <Copyright />
+          </Grid>
+        </Grid>
       </Box>
 
       {/* Back-to-top fab button */}

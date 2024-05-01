@@ -1,0 +1,36 @@
+{
+  "title": "msun.dev",
+  "copyright": "Mason Sun. All rights reserved.",
+  "meta": {
+    "charset": "utf-8",
+    "description": "Mason Sun's Website",
+    "keywords": "Data Scientist, ML Engineer, UX Researcher",
+    "viewport_options": "minimum-scale=1, initial-scale=1, width=device-width",
+    "theme_color": "#F4F4F4",
+    "manifest": "favicon/site.webmanifest",
+    "msapplication_config": "favicon/browserconfig.xml"
+  },
+  "icons": [
+    {
+      "rel": "apple-touch-icon",
+      "type": "image/png",
+      "sizes": "180x180",
+      "href": "favicon/apple-touch-icon.png?"
+    },
+    {
+      "rel": "icon",
+      "type": "image/png",
+      "sizes": "32x32",
+      "href": "favicon/favicon-32x32.png?"
+    },
+    {
+      "rel": "icon",
+      "type": "image/png",
+      "sizes": "16x16",
+      "href": "favicon/favicon-16x16.png?"
+    }
+  ],
+  "analytics": {
+    "googleMeasurementId": "G-MMT3GVS482"
+  }
+}

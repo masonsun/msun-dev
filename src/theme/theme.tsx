@@ -56,8 +56,8 @@ const theme = createTheme({
       lineHeight: 1.25,
     },
     h6: {
-      fontSize: "1rem",
-      fontWeight: 500,
+      fontSize: "0.9rem",
+      fontWeight: 400,
       lineHeight: 1.25,
     },
     overline: {

@@ -1,12 +1,10 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { Typography } from "@mui/material";
 
 export default function Copyright() {
-    return (
-        <Box component="div" sx={{ padding: 1 }}>
-            <Typography variant="h6">
-                Mason Sun &copy; {new Date().getFullYear()}
-            </Typography>
-        </Box>
-    );
+  return (
+    <Typography variant="h6">
+      {new Date().getFullYear()} &copy; Mason Sun. 
+      All rights reserved. Made with ☕️ from Seattle.
+    </Typography>
+  );
 }

@@ -36,7 +36,6 @@ const ListItemVariants = {
   },
 };
 
-// @ts-ignore
 const MotionBlurb = ({ children, open }) => {
   return (
     <motion.ul
@@ -53,11 +52,12 @@ const MotionBlurb = ({ children, open }) => {
   );
 };
 
-export function HeroText() {
+export function Hero() {
   const state = useProxy(store);
+
   return (
     <div className="blurb">
-      <img src="imgs/head.svg" height="200px" />
+      <img src="imgs/head.svg" height="150px" />
       <MotionBlurb open={state.open}>
         <h3>Hello there!</h3>
         <h4>Welcome to Mason's corner on the internet.</h4>
@@ -66,4 +66,4 @@ export function HeroText() {
   );
 }
 
-export default HeroText;
+export default Hero;

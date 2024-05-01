@@ -11,8 +11,7 @@ import theme from "../theme/theme";
 import "../theme/styles.css";
 
 // Configs
-import Content from "../config/content.json";
-import Analytics from "../config/analytics.json";
+import Metadata from "../config/metadata.json";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,11 +22,14 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  // Load web content from config
+  const { meta, title, icons, analytics } = Metadata;
+
   // Tracking code for Google Analytics
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = url => {
-      window.gtag('config', Analytics.googleMeasurementId as string, {
+      window.gtag('config', analytics.googleMeasurementId as string, {
         page_path: url,
       });
     }
@@ -50,8 +52,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   const layout = getLayout(<Component {...pageProps} />);
 
-  // Load web content from config
-  const { meta, title, icons } = Content;
+  
 
   return (
     <>
