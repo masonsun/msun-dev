@@ -4,11 +4,10 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      // source: https://colorhunt.co/palette/557571d49a89f7d1baf4f4f4
       main: "#F4F4F4",
       light: "#F7D1BA",
       dark: "#D49A89",
-      contrastText: "#557571",
+      contrastText: "rgb(60, 60, 60)",
     },
     background: {
       default: "rgb(242, 243, 245)",

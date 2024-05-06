@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { useTheme, Box, Grid, CssBaseline } from "@mui/material";
+import { useTheme, Box, Grid } from "@mui/material";
 
 import BackToTopButton from "../components/BackToTopButton";
 import Copyright from "../components/Copyright";
@@ -11,18 +11,17 @@ const BaseLayout = ({ children }) => {
 
   return (
     <>
-      <CssBaseline />
       <Box
         component="div"
         id="page-top"
         sx={{
           backgroundColor: theme.palette.primary.main,
-          padding: 5,
+          padding: 0,
           minHeight: "100vh",
         }}
       >
         {/* Top */}
-        <Grid container sx={{ paddingBottom: 5 }}>
+        <Grid container sx={{ padding: 5 }}>
           <Grid xs={12}>
             <Navbar toggleSidebar={true} />
           </Grid>
@@ -32,8 +31,8 @@ const BaseLayout = ({ children }) => {
         {children}
 
         {/* Bottom */}
-        <Grid container sx={{ position: "fixed", bottom: 0 }}>
-          <Grid xs={12}>
+        <Grid container sx={{ padding: 5 }}>
+          <Grid item xs={12}>
             <Copyright />
           </Grid>
         </Grid>

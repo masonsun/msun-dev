@@ -3,10 +3,10 @@ import { Grid, Button, useTheme } from "@mui/material";
 export default function Copyright() {
   const theme = useTheme();
   return (
-    <Grid component="div">
       <Button
         disabled
         sx={{
+          marginLeft: "5px",
           textTransform: "none",
           fontWeight: 400,
           fontSize: "0.9em",
@@ -15,6 +15,5 @@ export default function Copyright() {
       >
         {new Date().getFullYear()} &copy; Mason Sun. All rights reserved.
       </Button>
-    </Grid>
   );
 }

@@ -1,9 +1,8 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { analytics } from "../config/metadata.json"
+import { analytics } from "../config/metadata.json";
 
 export default class CustomDocument extends Document {
-  
   render() {
     return (
       <Html lang="en">
