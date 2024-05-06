@@ -4,11 +4,10 @@ import { useTheme, Box, Grid, CssBaseline } from "@mui/material";
 
 import BackToTopButton from "../components/BackToTopButton";
 import Copyright from "../components/Copyright";
-import Navigation from "../components/Navigation";
+import Navbar from "../components/Navbar";
 
 const BaseLayout = ({ children }) => {
   const theme = useTheme();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
@@ -17,20 +16,23 @@ const BaseLayout = ({ children }) => {
         component="div"
         id="page-top"
         sx={{
-          backgroundColor: theme.palette.primary.light,
-          height: "100vh",
+          backgroundColor: theme.palette.primary.main,
           padding: 5,
+          minHeight: "100vh",
         }}
       >
-        <Grid container>
+        {/* Top */}
+        <Grid container sx={{ paddingBottom: 5 }}>
           <Grid xs={12}>
-            <Navigation toggleSidebar={() => setIsSidebarOpen(true)} />
+            <Navbar toggleSidebar={true} />
           </Grid>
         </Grid>
 
+        {/* Body (derived from <Layout> components inside pages/*.tsx) */}
         {children}
 
-        <Grid container>
+        {/* Bottom */}
+        <Grid container sx={{ position: "fixed", bottom: 0 }}>
           <Grid xs={12}>
             <Copyright />
           </Grid>

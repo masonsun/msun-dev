@@ -26,10 +26,10 @@ function AquariumWithoutSpheres({ spheres }) {
       shadows
       camera={{ position: [40, 0, 0], fov: 35, near: 1, far: 50 }}
     >
-      <color attach="background" args={[theme.palette.primary.light]} />
+      <color attach="background" args={[theme.palette.primary.main]} />
       {/** Glass aquarium */}
-      <Aquarium position={[0, 0.25, 0]}>
-        <Float rotationIntensity={2} floatIntensity={10} speed={2}>
+      <Aquarium position={[0, 2, 0]}>
+        <Float rotationIntensity={8} floatIntensity={10} speed={2}>
           <OneSpinningObject
             position={[0, -0.5, -1]}
             rotation={[0, Math.PI, 0]}
@@ -89,6 +89,8 @@ function AquariumWithoutSpheres({ spheres }) {
       <CameraControls
         truckSpeed={0}
         dollySpeed={0}
+        azimuthAngle={Math.PI / 3}
+        polarAngle={Math.PI / 2}
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 2}
       />
@@ -161,13 +163,11 @@ export default function GlassBox() {
   return (
     <AquariumWithoutSpheres
       spheres={[
-        [1, "orange", 0.05, [-4, -1, -1]],
         [0.75, "lightblue", 0.1, [-4, 2, -2]],
         [1.25, "aquamarine", 0.2, [4, -3, 2]],
         [1.5, "lightblue", 0.3, [-4, -2, -3]],
         [2, "pink", 0.3, [-4, 2, -4]],
         [2, "skyblue", 0.3, [-4, 2, -4]],
-        [1.5, "orange", 0.05, [-4, -1, -1]],
         [2, "lightblue", 0.1, [-4, 2, -2]],
         [1.5, "pink", 0.2, [4, -3, 2]],
         [1.25, "aquamarine", 0.3, [-4, -2, -3]],

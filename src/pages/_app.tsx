@@ -8,7 +8,6 @@ import React, { useEffect, ReactElement, ReactNode } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme/theme";
-import "../theme/styles.css";
 
 // Configs
 import Metadata from "../config/metadata.json";

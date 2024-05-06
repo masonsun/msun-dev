@@ -32,7 +32,7 @@ const BackToTopButton = ({ elementId = "page-top" }) => {
   };
 
   return (
-    <Box component="div" sx={{ position: "absolute", zIndex: 2 }}>
+    <Box component="div" sx={{ position: "absolute", zIndex: 2, color: theme.palette.primary.contrastText  }}>
       <NoSsr>
         <Zoom in={trigger}>
           <Box
@@ -49,7 +49,7 @@ const BackToTopButton = ({ elementId = "page-top" }) => {
                 "&:hover": {
                   backgroundColor: "inherit",
                   color: "inherit",
-                  border: "2px solid" + theme.palette.primary.main,
+                  border: "2px solid" + theme.palette.primary.contrastText,
                 },
               }}
             >

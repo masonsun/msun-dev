@@ -5,10 +5,10 @@ const theme = createTheme({
     mode: "light",
     primary: {
       // source: https://colorhunt.co/palette/557571d49a89f7d1baf4f4f4
-      main: "#557571",
+      main: "#F4F4F4",
       light: "#F7D1BA",
       dark: "#D49A89",
-      contrastText: "#F4F4F4"
+      contrastText: "#557571",
     },
     background: {
       default: "rgb(242, 243, 245)",
@@ -17,6 +17,11 @@ const theme = createTheme({
     text: {
       primary: "rgb(60, 60, 60)",
       secondary: "rgb(123, 132, 140)",
+    },
+    action :{
+      // color for <Button disabled /> component
+      disabledBackground: "rgb(60, 60, 60)",
+      disabled: "rgb(60, 60, 60)",
     },
     divider: "rgb(197, 197, 197)",
   },
@@ -31,9 +36,11 @@ const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightBold: 600,
     h1: {
-      fontSize: "3.00rem",
-      fontWeight: 600,
-      lineHeight: 1.25,
+      fontSize: "5em",
+      fontWeight: 800,
+      letterSpacing: "-5px",
+      lineHeight: "1em",
+      margin: 0
     },
     h2: {
       fontSize: "1.75rem",
@@ -51,9 +58,11 @@ const theme = createTheme({
       lineHeight: 1.25,
     },
     h5: {
-      fontSize: "1.0625rem",
-      fontWeight: 500,
+      fontSize: "1.15em",
+      fontWeight: 350,
       lineHeight: 1.25,
+      letterSpacing: "-1px",
+      margin: "10px 0",
     },
     h6: {
       fontSize: "0.9rem",

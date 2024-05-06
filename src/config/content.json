@@ -5,12 +5,26 @@
       "href": "/"
     },
     {
-      "title": "blog",
-      "href": "/blog"
+      "title": "misc",
+      "href": "/misc"
     },
     {
-      "title": "tenets",
-      "href": "/tenets"
+      "title": "sandbox",
+      "href": "/sandbox"
+    }
+  ],
+  "books": [
+    {
+      "title": "High Output Management",
+      "href": "https://www.amazon.com/High-Output-Management-Andrew-Grove/dp/0679762884"
+    },
+    {
+      "title": "Zero to One",
+      "href": "https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296"
+    },
+    {
+      "title": "The Almanack Of Naval Ravikant",
+      "href": "https://www.navalmanack.com/"
     }
   ]
 }
