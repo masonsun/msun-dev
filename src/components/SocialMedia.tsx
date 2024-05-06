@@ -5,7 +5,7 @@ import { socialMedia } from "../config/media.json";
 export default function SocialMedia() {
   const theme = useTheme();
   return (
-    <Box component="div" sx={{ marginLeft: 5 }}>
+    <Box component="div" sx={{ marginLeft: -1, padding: 0 }}>
       {socialMedia.map((item) => (
         <Tooltip arrow title={item.title} componentsProps={{
           tooltip: {
