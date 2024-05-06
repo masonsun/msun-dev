@@ -1,12 +1,13 @@
 import React from "react";
-import { useTheme } from "@mui/material";
-
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import Zoom from "@mui/material/Zoom";
-import NoSsr from "@mui/material/NoSsr";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
+import {
+  Box,
+  Fab,
+  Zoom,
+  NoSsr,
+  useTheme,
+  useScrollTrigger,
+} from "@mui/material";
 
 const BackToTopButton = ({ elementId = "page-top" }) => {
   const theme = useTheme();
@@ -31,7 +32,7 @@ const BackToTopButton = ({ elementId = "page-top" }) => {
   };
 
   return (
-    <Box component="div" sx={{ position: "absolute", zIndex: 2 }}>
+    <Box component="div" sx={{ position: "absolute", zIndex: 2, color: theme.palette.primary.contrastText  }}>
       <NoSsr>
         <Zoom in={trigger}>
           <Box
@@ -48,7 +49,7 @@ const BackToTopButton = ({ elementId = "page-top" }) => {
                 "&:hover": {
                   backgroundColor: "inherit",
                   color: "inherit",
-                  border: "2px solid" + theme.palette.primary.main,
+                  border: "2px solid" + theme.palette.primary.contrastText,
                 },
               }}
             >

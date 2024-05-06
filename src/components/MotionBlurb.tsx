@@ -1,18 +1,12 @@
 import { Children } from "react";
 import { motion } from "framer-motion";
-import { proxy } from "valtio";
-import { useProxy } from "valtio/utils";
-
-const store = proxy({
-  open: true,
-});
 
 const ListVariants = {
   hidden: {
     opacity: 0,
     height: 0,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.1,
     },
   },
   visible: {
@@ -36,7 +30,6 @@ const ListItemVariants = {
   },
 };
 
-// @ts-ignore
 const MotionBlurb = ({ children, open }) => {
   return (
     <motion.ul
@@ -45,25 +38,10 @@ const MotionBlurb = ({ children, open }) => {
       animate={open ? "visible" : "hidden"}
     >
       {Children.map(children, (child) => (
-        <li>
-          <motion.div variants={ListItemVariants}>{child}</motion.div>
-        </li>
+        <motion.div variants={ListItemVariants}>{child}</motion.div>
       ))}
     </motion.ul>
   );
 };
 
-export function HeroText() {
-  const state = useProxy(store);
-  return (
-    <div className="blurb">
-      <img src="icons/colored/android-bot-100.svg" />
-      <MotionBlurb open={state.open}>
-        <h3>Hello there!</h3>
-        <h4>Welcome to Mason's corner on the internet.</h4>
-      </MotionBlurb>
-    </div>
-  );
-}
-
-export default HeroText;
+export default MotionBlurb;

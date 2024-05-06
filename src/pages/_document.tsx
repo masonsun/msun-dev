@@ -1,22 +1,22 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Analytics from "../config/analytics.json"
-
+import { analytics } from "../config/metadata.json"
 
 export default class CustomDocument extends Document {
+  
   render() {
     return (
       <Html lang="en">
         <Head>
           {/* Google Analytics */}
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${Analytics.googleMeasurementId}`} />
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${analytics.googleMeasurementId}`} />
           <script
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${Analytics.googleMeasurementId}', {
+                gtag('config', '${analytics.googleMeasurementId}', {
                   page_path: window.location.pathname
                 });
               `,

@@ -1,23 +1,20 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material";
+import { Grid, Button, useTheme } from "@mui/material";
 
-import Content from "../config/content.json";
-
-const Copyright = () => {
+export default function Copyright() {
   const theme = useTheme();
-  const { copyright } = Content;
-
   return (
-    <Grid container sx={{ paddingX: 10, paddingY: 3 }}>
-      <Grid container item xs={12} md={12} justifyContent="left">
-        <Typography variant="body2" color={theme.palette.text.secondary}>
-          &copy; {new Date().getFullYear()} {copyright}
-        </Typography>
-      </Grid>
+    <Grid component="div">
+      <Button
+        disabled
+        sx={{
+          textTransform: "none",
+          fontWeight: 400,
+          fontSize: "0.9em",
+          color: theme.palette.text.primary,
+        }}
+      >
+        {new Date().getFullYear()} &copy; Mason Sun. All rights reserved.
+      </Button>
     </Grid>
   );
-};
-
-export default Copyright;
+}

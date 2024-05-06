@@ -1,0 +1,49 @@
+{
+  "socialMedia": [
+    {
+      "title": "Github",
+      "href": "https://github.com/masonsun",
+      "src": "icons/github.svg"
+    },
+    {
+      "title": "LinkedIn",
+      "href": "https://www.linkedin.com/in/masonsun",
+      "src": "icons/linkedin.svg"
+    },
+    {
+      "title": "masonzsun@gmail.com",
+      "href": "mailto:masonzsun@gmail.com",
+      "src": "icons/gmail.svg"
+    },
+    {
+      "title": "Calendar",
+      "href": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0iICLKRwIt3C-1CVdSQegvBRDGA_308bJTx7f5GeEjzvP38ffvlSRrwaOh-JH-xZxiqKRH5HyG",
+      "src": "icons/calendar.svg"
+    },
+    {
+      "title": "Twitter / X",
+      "href": "https://twitter.com/masonzsun",
+      "src": "icons/twitterx.svg"
+    },
+    {
+      "title": "Goodreads",
+      "href": "https://www.goodreads.com/user/show/168281061-mason-sun",
+      "src": "icons/goodreads.svg"
+    },
+    {
+      "title": "Quora",
+      "href": "https://www.quora.com/profile/Mason-Sun-1",
+      "src": "icons/quora.svg"
+    },
+    {
+      "title": "Medium",
+      "href": "https://medium.com/@sunmason",
+      "src": "icons/medium.svg"
+    },
+    {
+      "title": "Substacks",
+      "href": "https://substack.com/@masonsun",
+      "src": "icons/substack.svg"
+    }
+  ]
+}
