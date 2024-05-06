@@ -4,6 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import Layout from "../layout/Layout";
 import MotionBlurb from "../components/MotionBlurb";
 import SocialMedia from "../components/SocialMedia";
+import Copyright from "../components/Copyright";
 
 import { proxy } from "valtio";
 import { useProxy } from "valtio/utils";
@@ -17,7 +18,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Grid container>
+      <Grid container sx={{ padding: 3 }}>
         <Grid item xs={12}>
           <MotionBlurb open={state.open}>
             <Grid container>
@@ -37,6 +38,9 @@ export default function Home() {
               </Grid>
             </Grid>
           </MotionBlurb>
+        </Grid>
+        <Grid item xs={12} sx={{ paddingTop: 5 }}>
+          <Copyright />
         </Grid>
       </Grid>
     </Layout>

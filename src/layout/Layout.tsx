@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useTheme, Box, Grid } from "@mui/material";
 
 import BackToTopButton from "../components/BackToTopButton";
-import Copyright from "../components/Copyright";
 import Navbar from "../components/Navbar";
 
 const BaseLayout = ({ children }) => {
@@ -17,11 +16,12 @@ const BaseLayout = ({ children }) => {
         sx={{
           backgroundColor: theme.palette.primary.main,
           padding: 0,
+          margin: 0,
           minHeight: "100vh",
         }}
       >
         {/* Top */}
-        <Grid container sx={{ padding: 5 }}>
+        <Grid container sx={{ padding: 3 }}>
           <Grid xs={12}>
             <Navbar toggleSidebar={true} />
           </Grid>
@@ -29,13 +29,6 @@ const BaseLayout = ({ children }) => {
 
         {/* Body (derived from <Layout> components inside pages/*.tsx) */}
         {children}
-
-        {/* Bottom */}
-        <Grid container sx={{ padding: 5 }}>
-          <Grid item xs={12}>
-            <Copyright />
-          </Grid>
-        </Grid>
       </Box>
 
       {/* Back-to-top fab button */}
