@@ -15,4 +15,4 @@ firebase deploy  # deploy to production
 # Credits
 - SVG icons from [Icons8](https://icons8.com/)
 - Illustrations from [Open Peeps](https://www.openpeeps.com/)
-- Company logs from [Linkedin](https://www.linkedin.com)
+- Company logos from [Linkedin](https://www.linkedin.com)
