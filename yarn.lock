@@ -1440,7 +1440,7 @@
   dependencies:
     fast-glob "3.3.1"
 
-"@next/swc-darwin-arm64@^15.5.23", "@next/swc-darwin-arm64@15.5.23":
+"@next/swc-darwin-arm64@15.5.23":
   version "15.5.23"
   resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-15.5.23.tgz"
   integrity sha512-SrEwOROH/rhA03F59hHtdhgtfZMWGzr5duDBWgRQt2rS3mJhqMKOcnNx6txOd0/i3E3D3uFKYFvyHsEiwQxzag==

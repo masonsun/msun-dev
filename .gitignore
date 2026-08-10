@@ -82,3 +82,8 @@ next-env.d.ts
 .DS_Store
 .vscode/
 *.pem
+
+# Claude Code
+skills-lock.json
+.agents/
+.claude/
