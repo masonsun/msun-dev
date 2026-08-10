@@ -1,0 +1,55 @@
+{
+  "cards": [
+    {
+      "title": "Meta",
+      "role": "Data Science",
+      "date": "2024 - Present",
+      "logo": "logos/meta.jpg",
+      "url": "https://tech.facebook.com/reality-labs/",
+      "layout": "gallery",
+      "projectTitle": "Reality Labs Insights",
+      "projectSubtitle": "To be updated...",
+      "projects": [
+        { "projectTitle": "Wearables", "image": "imgs/meta_glasses_crop.jpg" },
+        { "projectTitle": "VR", "image": "imgs/meta_quest_panels_crop.jpg" }
+      ]
+    },
+    {
+      "title": "SoFi",
+      "role": "Data Science",
+      "date": "2021 – 2024",
+      "logo": "logos/sofi.jpg",
+      "url": "https://www.sofi.com/",
+      "layout": "sidebar",
+      "projectTitle": "Experimentation and MLOps",
+      "projectSubtitle": "To be updated...",
+      "image": "imgs/sofi_app.png",
+      "showFullImage": true
+    },
+    {
+      "title": "Amazon",
+      "role": "Applied Science",
+      "date": "2017 – 2021",
+      "logo": "logos/amazon.jpg",
+      "url": "https://www.amazon.com/",
+      "layout": "cards",
+      "projects": [
+        { "projectTitle": "Inventory Control", "projectSubtitle": "To be updated...", "image": "imgs/amazon_fba.jpg" },
+        { "projectTitle": "Alexa", "projectSubtitle": "To be updated...", "image": "imgs/amazon_alexa_puck.jpg" },
+        { "projectTitle": "Middle Mile Tech", "projectSubtitle": "To be updated...", "image": "imgs/amazon_yard_cv.jpg" }
+      ]
+    },
+    {
+      "title": "KPMG",
+      "role": "Analytics",
+      "date": "2015",
+      "logo": "logos/kpmg.jpg",
+      "url": "https://kpmg.com/",
+      "layout": "sidebar",
+      "projectTitle": "CRM Analytics",
+      "projectSubtitle": "To be updated...",
+      "image": "imgs/analytics_stock_crop.jpg",
+      "imageWidth": "28%"
+    }
+  ]
+}

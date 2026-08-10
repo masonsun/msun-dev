@@ -47,9 +47,8 @@ const BackToTopButton = ({ elementId = "page-top" }) => {
               aria-label="Back to top"
               sx={{
                 "&:hover": {
-                  backgroundColor: "inherit",
-                  color: "inherit",
-                  border: "2px solid" + theme.palette.primary.contrastText
+                  backgroundColor: "rgba(60, 60, 60, 0.85)",
+                  color: "#fff",
                 },
               }}
             >

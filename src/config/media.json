@@ -11,12 +11,12 @@
       "src": "icons/linkedin.svg"
     },
     {
-      "title": "masonzsun@gmail.com",
+      "title": "Email",
       "href": "mailto:masonzsun@gmail.com",
       "src": "icons/gmail.svg"
     },
     {
-      "title": "Calendar",
+      "title": "1:1s",
       "href": "https://calendar.app.google/cEnwoEQpTZj9cAtDA",
       "src": "icons/calendar.svg"
     },
@@ -44,6 +44,17 @@
       "title": "Substack",
       "href": "https://substack.com/@masonsun",
       "src": "icons/substack.svg"
+    },
+    {
+      "title": "Fun",
+      "href": "/sandbox",
+      "src": "icons/idea.svg"
+    },
+    {
+      "title": "What's next?",
+      "href": "/",
+      "src": "icons/path.svg",
+      "disabled": true
     }
   ]
 }

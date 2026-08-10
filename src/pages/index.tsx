@@ -1,10 +1,12 @@
-import React from "react";
-import { Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, Typography, Link, Dialog, DialogContent, IconButton, Box } from "@mui/material";
+import { motion } from "framer-motion";
+import { Close } from "@mui/icons-material";
 
 import Layout from "../layout/Layout";
 import MotionBlurb from "../components/MotionBlurb";
 import SocialMedia from "../components/SocialMedia";
-import Copyright from "../components/Copyright";
+import Rolodex from "../components/Rolodex";
 
 import { proxy } from "valtio";
 import { useProxy } from "valtio/utils";
@@ -15,34 +17,147 @@ const store = proxy({
 
 export default function Home() {
   const state = useProxy(store);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [sunHovered, setSunHovered] = useState(false);
+  const [bustFlipping, setBustFlipping] = useState(false);
+  const [bustShowSunglasses, setBustShowSunglasses] = useState(() => Math.random() < 0.5);
 
   return (
     <Layout>
-      <Grid container sx={{ padding: 3 }}>
-        <Grid item xs={12}>
+      <Grid container sx={{ padding: { xs: 2, md: 4 }, maxWidth: 800 }} spacing={{ xs: 0, md: 2 }}>
+        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start" }}>
           <MotionBlurb open={state.open}>
             <Grid container>
               <Grid item>
-                <img src="imgs/bust.svg" height="300px" />
+                <Box
+                  component={motion.div}
+                  onClick={() => {
+                    if (!bustFlipping) {
+                      setBustFlipping(true);
+                      setTimeout(() => setBustShowSunglasses((prev) => !prev), 250);
+                      setTimeout(() => setBustFlipping(false), 500);
+                    }
+                  }}
+                  animate={{ rotateY: bustFlipping ? [0, 90, 0] : 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut", times: [0, 0.5, 1] }}
+                  sx={{ cursor: "pointer", perspective: "800px" }}
+                >
+                  <img
+                    src={bustShowSunglasses ? "illustrations/bust-sunglasses.svg" : "illustrations/bust.svg"}
+                    height="250px"
+                  />
+                </Box>
               </Grid>
               <Grid item>
-                <Typography variant="h1">Hi there.</Typography>
-                <Typography variant="h5">
-                  Welcome to Mason's corner on the internet.
+                <Typography variant="h1" sx={{ fontSize: "2.8em", letterSpacing: "-2.0px" }}>
+                  {"Mason "}
+                  <Box
+                    component="span"
+                    onMouseEnter={() => setSunHovered(true)}
+                    onMouseLeave={() => setSunHovered(false)}
+                    sx={{
+                      display: "inline-block",
+                      position: "relative",
+                      perspective: "800px",
+                      cursor: "default",
+                    }}
+                  >
+                    <Box
+                      component={motion.span}
+                      sx={{
+                        display: "inline-block",
+                        transformOrigin: "bottom center",
+                        backfaceVisibility: "hidden",
+                      }}
+                      animate={{ rotateX: sunHovered ? -90 : 0 }}
+                      transition={{ type: "spring", stiffness: 180, damping: 20, mass: 0.8 }}
+                    >
+                      Sun
+                    </Box>
+                    <Box
+                      component={motion.span}
+                      sx={{
+                        display: "inline-block",
+                        position: "absolute",
+                        left: 0,
+                        bottom: 0,
+                        transformOrigin: "bottom center",
+                        backfaceVisibility: "hidden",
+                      }}
+                      initial={{ rotateX: 91, visibility: "hidden" }}
+                      animate={{
+                        rotateX: sunHovered ? 0 : 91,
+                        visibility: sunHovered ? "visible" : "hidden",
+                      }}
+                      transition={{
+                        rotateX: { type: "spring", stiffness: 180, damping: 20, mass: 0.8 },
+                        visibility: { delay: sunHovered ? 0 : 0.15 },
+                      }}
+                    >
+                      孫
+                    </Box>
+                  </Box>
                 </Typography>
-                <Typography variant="h5">
-                  Feel free to email me, schedule a call, or reach out on any of
-                  the following platforms:
+                <Typography variant="h5" sx={{ mb: 3 }}>
+                  Based in Seattle.<br />
+                  <Link
+                    component="button"
+                    onClick={() => setAboutOpen(true)}
+                    underline="none"
+                    sx={{
+                      fontWeight: 350,
+                      fontSize: "inherit",
+                      letterSpacing: "inherit",
+                      lineHeight: "inherit",
+                      color: "#1a4d8f",
+                      cursor: "pointer",
+                      verticalAlign: "baseline",
+                      "&:hover": { color: "#0d3468" },
+                    }}
+                  >
+                    {"About →"}
+                  </Link>
                 </Typography>
                 <SocialMedia />
               </Grid>
             </Grid>
           </MotionBlurb>
         </Grid>
-        <Grid item xs={12} sx={{ paddingTop: 5 }}>
-          <Copyright />
+        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start" }}>
+          <Rolodex />
         </Grid>
       </Grid>
+
+      <Dialog
+        open={aboutOpen}
+        onClose={() => setAboutOpen(false)}
+        maxWidth="xs"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 4,
+            p: 0,
+            overflow: "hidden",
+          },
+        }}
+      >
+        <IconButton
+          onClick={() => setAboutOpen(false)}
+          sx={{ position: "absolute", top: 8, right: 8, zIndex: 1 }}
+        >
+          <Close fontSize="small" />
+        </IconButton>
+        <DialogContent sx={{ p: 4 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+            <img src="illustrations/bust-black-shirt.svg" height="220" />
+            <Box>
+              <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.2 }}>
+                10+ years of experience in data science and machine learning.
+              </Typography>
+            </Box>
+          </Box>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }

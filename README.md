@@ -1,13 +1,18 @@
-# Overview
-Source code for my personal website [msun.dev](https://msun.dev). Disclaimer, I'm a web dev noob.
+# msun.dev
+Source code for [msun.dev](https://msun.dev).
 
-# Local dev
+# Development
 ```sh
-yarn dev         # interactive/auto-reloads at localhost:3000
-yarn build       # build
-yarn start       # serve built artifacts locally
-yarn export      # export files (to `out/` per firebase.json) for static hosting 
+yarn dev         # start dev server with hot reload at localhost:3000
+yarn build       # production build
+yarn start       # serve production build locally
+yarn export      # export static files to out/ for hosting
 
-firebase serve   # hosting at localhost:5002
-firebase deploy  # hotfix on live
+firebase serve   # preview hosted site at localhost:5002
+firebase deploy  # deploy to production
 ```
+
+# Credits
+- SVG icons from [Icons8](https://icons8.com/)
+- Illustrations from [Open Peeps](https://www.openpeeps.com/)
+- Company logs from [Linkedin](https://www.linkedin.com)

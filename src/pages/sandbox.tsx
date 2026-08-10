@@ -1,19 +1,30 @@
 import React from "react";
-import { useTheme, Box } from "@mui/material";
+import NextLink from "next/link";
+import { Box, IconButton } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 
 import Layout from "../layout/Layout";
 import GlassBox from "../components/GlassBox";
-import Copyright from "../components/Copyright";
 
 export default function Sandbox() {
-  const theme = useTheme();
   return (
     <Layout>
+      <IconButton
+        component={NextLink}
+        href="/"
+        sx={{
+          position: "absolute",
+          top: 16,
+          left: 16,
+          zIndex: 1,
+          color: "text.secondary",
+          "&:hover": { color: "text.primary" },
+        }}
+      >
+        <ArrowBack />
+      </IconButton>
       <Box component="div" sx={{ height: "100vh" }}>
         <GlassBox />
-      </Box>
-      <Box component="div" sx={{ position: "absolute", bottom: 0 }}>
-        <Copyright />
       </Box>
     </Layout>
   );
