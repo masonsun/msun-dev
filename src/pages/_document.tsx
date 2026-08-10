@@ -1,6 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { analytics } from "../config/metadata.json";
+import metadataConfig from "../config/metadata.json";
+const { analytics } = metadataConfig;
 
 export default class CustomDocument extends Document {
   render() {

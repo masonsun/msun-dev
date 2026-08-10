@@ -1,10 +1,11 @@
 import React from "react";
 import NextLink from "next/link";
+import dynamic from "next/dynamic";
 import { Box, IconButton } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 
 import Layout from "../layout/Layout";
-import GlassBox from "../components/GlassBox";
+const GlassBox = dynamic(() => import("../components/GlassBox"), { ssr: false });
 
 export default function Sandbox() {
   return (
