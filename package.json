@@ -16,7 +16,6 @@
     "@firebase/analytics": "^0.10.0",
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
-    "@next/swc-darwin-arm64": "^15.5.23",
     "@react-three/drei": "^9.83.8",
     "@react-three/fiber": "^8.14.1",
     "@react-three/postprocessing": "^2.15.1",
