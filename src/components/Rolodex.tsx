@@ -160,14 +160,20 @@ export default function Rolodex() {
 
   const atStart = activeIndex === 0;
   const atEnd = activeIndex === cards.length - 1;
-  const flip = useCallback((dir: number) => setActiveIndex((prev) => Math.min(Math.max(prev + dir, 0), cards.length - 1)), []);
+  const flip = useCallback((count: number) => setActiveIndex((prev) => Math.min(Math.max(prev + count, 0), cards.length - 1)), []);
 
+  const SWIPE_THRESHOLD = 30;
+  const SWIPE_PER_CARD = 80;
   const touchStartY = useRef<number | null>(null);
   const onTouchStart = useCallback((e: React.TouchEvent) => { touchStartY.current = e.touches[0].clientY; }, []);
   const onTouchEnd = useCallback((e: React.TouchEvent) => {
     if (touchStartY.current === null) return;
     const delta = touchStartY.current - e.changedTouches[0].clientY;
-    if (Math.abs(delta) > 30) flip(delta > 0 ? 1 : -1);
+    if (Math.abs(delta) > SWIPE_THRESHOLD) {
+      const dir = delta > 0 ? 1 : -1;
+      const count = Math.max(1, Math.floor(Math.abs(delta) / SWIPE_PER_CARD));
+      flip(dir * count);
+    }
     touchStartY.current = null;
   }, [flip]);
 
@@ -180,6 +186,11 @@ export default function Rolodex() {
         : adjY * 0.25 + CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 48);
 
   return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASING as unknown as number[], delay: 0.08 }}
+    >
     <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
       <motion.div
         onTouchStart={onTouchStart}
@@ -227,5 +238,6 @@ export default function Rolodex() {
         </IconButton>
       </Box>
     </Box>
+    </motion.div>
   );
 }

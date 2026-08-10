@@ -8,6 +8,7 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           {/* Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${analytics.googleMeasurementId}`} />
           <script

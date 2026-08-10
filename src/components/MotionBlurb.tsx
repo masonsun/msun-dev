@@ -1,32 +1,26 @@
 import { Children } from "react";
 import { motion } from "framer-motion";
 
+const EASING = [0.4, 0, 0.2, 1];
+
 const ListVariants = {
-  hidden: {
-    opacity: 0,
-    height: 0,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    height: "auto",
     transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.05,
+      staggerChildren: 0.08,
+      ease: EASING,
+      duration: 0.5,
     },
   },
 };
 
 const ListItemVariants = {
-  hidden: {
-    opacity: 0,
-    y: "100%",
-  },
+  hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
     y: 0,
+    transition: { duration: 0.5, ease: EASING },
   },
 };
 

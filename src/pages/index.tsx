@@ -24,10 +24,10 @@ export default function Home() {
 
   return (
     <Layout>
-      <Grid container sx={{ padding: { xs: 2, md: 4 }, maxWidth: 800 }} spacing={{ xs: 0, md: 2 }}>
-        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start" }}>
+      <Grid container sx={{ padding: { xs: 2, md: 4 }, maxWidth: 800, justifyContent: { xs: "center", md: "flex-start" } }} spacing={{ xs: 0, md: 2 }}>
+        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: { xs: "center", md: "flex-start" } }}>
           <MotionBlurb open={state.open}>
-            <Grid container>
+            <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
               <Grid item>
                 <Box
                   component={motion.div}
@@ -43,12 +43,12 @@ export default function Home() {
                   sx={{ cursor: "pointer", perspective: "800px" }}
                 >
                   <img
-                    src={bustShowSunglasses ? "illustrations/bust-sunglasses.svg" : "illustrations/bust.svg"}
+                    src={bustShowSunglasses ? "illustrations/bust-1.svg" : "illustrations/bust-0.svg"}
                     height="250px"
                   />
                 </Box>
               </Grid>
-              <Grid item>
+              <Grid item sx={{ textAlign: { xs: "center", md: "left" } }}>
                 <Typography variant="h1" sx={{ fontSize: "2.8em", letterSpacing: "-2.0px" }}>
                   {"Mason "}
                   <Box
@@ -123,7 +123,7 @@ export default function Home() {
             </Grid>
           </MotionBlurb>
         </Grid>
-        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start" }}>
+        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: { xs: "center", md: "flex-start" } }}>
           <Rolodex />
         </Grid>
       </Grid>
@@ -149,7 +149,7 @@ export default function Home() {
         </IconButton>
         <DialogContent sx={{ p: 4 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-            <img src="illustrations/bust-black-shirt.svg" height="220" />
+            <img src="illustrations/bust-2.svg" height="220" />
             <Box>
               <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.2 }}>
                 10+ years of experience in data science and machine learning.

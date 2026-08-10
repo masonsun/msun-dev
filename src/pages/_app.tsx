@@ -66,11 +66,11 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 
         {/* Links */}
         <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
         {/* Favicons */}
-        {icons.map((item) => (
+        {icons.map((item, i) => (
           <link
+            key={i}
             rel={item.rel}
             type={item.type}
             sizes={item.sizes}
