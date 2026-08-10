@@ -1,8 +1,9 @@
 import React, { useState, useRef, useCallback } from "react";
-import { useTheme, useMediaQuery, Box, IconButton, Typography, Theme } from "@mui/material";
+import { useTheme, useMediaQuery, Box, IconButton, Typography, Theme, SxProps } from "@mui/material";
 import { KeyboardArrowUp, KeyboardArrowDown, OpenInNew } from "@mui/icons-material";
 import { motion } from "framer-motion";
-import { cards } from "../config/work.json";
+import workData from "../config/work.json";
+const { cards } = workData;
 
 const CARD_HEIGHT = 280;
 const VISUAL_GAP = 10;
@@ -36,8 +37,9 @@ function getCardStyle(offset: number, compact: boolean) {
   return { y: sign * far, scale: SCALES.hidden, opacity: 0, rotateX: sign * -50, zIndex: 1 };
 }
 
-function ProjectTitle({ title, subtitle, theme, sx }: { title: string; subtitle?: string; theme: Theme; sx?: object }) {
+function ProjectTitle({ title, subtitle, theme, sx }: { title: string; subtitle?: string; theme: Theme; sx?: SxProps<Theme> }) {
   return (
+    // @ts-ignore - MUI Box sx union type too complex
     <Box sx={sx}>
       <Typography variant="body2" sx={{ fontWeight: 600, color: theme.palette.text.primary, fontSize: "0.9rem", lineHeight: 1.2 }}>
         {title}

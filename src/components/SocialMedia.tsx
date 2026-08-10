@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, IconButton, Tooltip, useTheme } from "@mui/material";
-import { socialMedia } from "../config/media.json";
+import mediaData from "../config/media.json";
+const { socialMedia } = mediaData;
 
 const placements = [
   { x: 11, y: 5, rotate: -7 },

@@ -32,7 +32,7 @@
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
     "styled-components": "^6.0.7",
-    "three": "^0.156.1",
+    "three": "^0.160.0",
     "typescript": "5.1.6",
     "valtio": "^1.11.2"
   },

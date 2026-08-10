@@ -100,7 +100,7 @@ function AquariumWithoutSpheres({ spheres }) {
 
 // @ts-ignore
 function Aquarium({ children, ...props }) {
-  const ref = useRef();
+  const ref = useRef(null);
   // @ts-ignore
   const { nodes } = useGLTF("glb/glass-box.glb");
   const stencil = useMask(1, false);
@@ -115,7 +115,7 @@ function Aquarium({ children, ...props }) {
       <mesh
         castShadow
         scale={[0.61 * 6, 0.8 * 6, 1 * 6]}
-        geometry={nodes.Cube.geometry}
+        geometry={(nodes.Cube as any).geometry}
       >
         <MeshTransmissionMaterial
           backside
