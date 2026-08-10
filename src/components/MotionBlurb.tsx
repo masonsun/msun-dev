@@ -1,7 +1,7 @@
 import { Children } from "react";
 import { motion } from "framer-motion";
 
-const EASING = [0.4, 0, 0.2, 1];
+const EASING: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 const ListVariants = {
   hidden: { opacity: 0 },

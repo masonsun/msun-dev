@@ -10,7 +10,7 @@ const VISUAL_GAP = 10;
 const SECOND_GAP = 4;
 
 const SCALES = { adjacent: 0.88, second: 0.76, smAdjacent: 0.82, hidden: 0.7 };
-const EASING = [0.4, 0, 0.2, 1] as const;
+const EASING: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 function getCardStyle(offset: number, compact: boolean) {
   if (offset === 0) return { y: 0, scale: 1, opacity: 1, rotateX: 0, zIndex: 4 };
@@ -189,14 +189,14 @@ export default function Rolodex() {
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: EASING as unknown as number[], delay: 0.08 }}
+      transition={{ duration: 0.5, ease: EASING, delay: 0.08 }}
     >
     <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
       <motion.div
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
         animate={{ height: containerHeight }}
-        transition={{ duration: 0.5, ease: EASING as unknown as number[] }}
+        transition={{ duration: 0.5, ease: EASING }}
         style={{ width: "min(450px, calc(100vw - 100px))", perspective: "1000px", position: "relative", overflow: "hidden", touchAction: "pan-x" }}
       >
         {cards.map((card, index) => {
@@ -207,7 +207,7 @@ export default function Rolodex() {
             <motion.div
               key={card.title}
               animate={{ y: style.y, scale: style.scale, opacity: style.opacity, rotateX: style.rotateX, zIndex: style.zIndex }}
-              transition={{ duration: 0.5, ease: EASING as unknown as number[] }}
+              transition={{ duration: 0.5, ease: EASING }}
               style={{ position: "absolute", width: "100%", height: CARD_HEIGHT, top: topPad, transformStyle: "preserve-3d", transformOrigin: "center center" }}
             >
               <Box
