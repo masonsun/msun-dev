@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useTheme, useMediaQuery, Box, IconButton, Typography, Theme, SxProps } from "@mui/material";
-import { KeyboardArrowUp, KeyboardArrowDown, OpenInNew } from "@mui/icons-material";
+import { KeyboardArrowUp, KeyboardArrowDown, OpenInNew, OpenInFull, CloseFullscreen } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import workData from "../config/work.json";
 const { cards } = workData;
@@ -20,7 +20,8 @@ function getCardStyle(offset: number, compact: boolean) {
   const adjScale = compact ? SCALES.smAdjacent : SCALES.adjacent;
 
   if (abs === 1) {
-    const base = CARD_HEIGHT / 2 + VISUAL_GAP + (CARD_HEIGHT * adjScale) / (sign < 0 ? 2.5 : 2);
+    const gap = sign < 0 ? (compact ? -VISUAL_GAP : -VISUAL_GAP * 2) : VISUAL_GAP;
+    const base = CARD_HEIGHT / 2 + gap + (CARD_HEIGHT * adjScale) / 2;
     return { y: sign * base, scale: adjScale, opacity: compact ? 0.3 : 0.4, rotateX: sign * -30, zIndex: 3 };
   }
   if (abs === 2 && !compact) {
@@ -138,7 +139,7 @@ function CardHeader({ card, theme }: { card: (typeof cards)[number]; theme: Them
           </Typography>
         </Box>
       </Box>
-      <IconButton href={card.url} target="_blank" size="small" sx={{ color: theme.palette.text.secondary, "&:hover": { color: theme.palette.text.primary } }}>
+      <IconButton href={card.url} target="_blank" size="small" sx={{ color: theme.palette.text.secondary, "@media (hover: hover)": { "&:hover": { color: theme.palette.text.primary } }, "&:active": { color: theme.palette.text.primary } }}>
         <OpenInNew sx={{ fontSize: 16 }} />
       </IconButton>
     </Box>
@@ -157,6 +158,7 @@ export default function Rolodex() {
   const theme = useTheme();
   const compact = useMediaQuery(theme.breakpoints.down("md"));
   const [activeIndex, setActiveIndex] = useState(0);
+  const [flat, setFlat] = useState(false);
 
   const atStart = activeIndex === 0;
   const atEnd = activeIndex === cards.length - 1;
@@ -179,43 +181,57 @@ export default function Rolodex() {
 
   const adjScale = compact ? SCALES.smAdjacent : SCALES.adjacent;
   const adjY = CARD_HEIGHT / 2 + VISUAL_GAP + (CARD_HEIGHT * adjScale) / 2;
-  const topPad = atStart ? 24 : adjY * 0.25 + 24;
+  const topPad = atStart ? (compact ? 24 : 12) : adjY * 0.15 + 24;
   const containerHeight = compact
-    ? (atStart ? CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP + 24 : adjY * 0.25 + CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP)
-    : (atStart ? CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 72
-        : adjY * 0.25 + CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 48);
+    ? (atStart ? CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP + 12 : adjY * 0.15 + CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP)
+    : (atStart ? CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 60
+        : adjY * 0.15 + CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 48);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: EASING, delay: 0.08 }}
-    >
-    <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
-      <motion.div
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-        animate={{ height: containerHeight }}
-        transition={{ duration: 0.5, ease: EASING }}
-        style={{ width: "min(450px, calc(100vw - 100px))", perspective: "1000px", position: "relative", overflow: "hidden", touchAction: "pan-x" }}
+  const toolbar = (
+    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "min(450px, calc(100vw - 32px))", mb: flat ? 0.5 : 0, position: "relative", zIndex: 10 }}>
+      {!flat ? (
+        <Box sx={{ display: "flex", gap: 0 }}>
+          <IconButton onClick={() => flip(-1)} disabled={atStart}
+            sx={{ color: theme.palette.text.primary, opacity: atStart ? 0.15 : 0.7, "&:hover": { opacity: 1, backgroundColor: "rgba(0,0,0,0.06)" } }}>
+            <KeyboardArrowUp />
+          </IconButton>
+          <IconButton onClick={() => flip(1)} disabled={atEnd}
+            sx={{ color: theme.palette.text.primary, opacity: atEnd ? 0.15 : 0.7, "&:hover": { opacity: 1, backgroundColor: "rgba(0,0,0,0.06)" } }}>
+            <KeyboardArrowDown />
+          </IconButton>
+        </Box>
+      ) : <Box />}
+      <IconButton
+        onClick={() => setFlat((f) => !f)}
+        sx={{ color: theme.palette.text.secondary, opacity: 0.5, "@media (hover: hover)": { "&:hover": { opacity: 1 } }, "&:active": { opacity: 1 } }}
       >
-        {cards.map((card, index) => {
-          const offset = index - activeIndex;
-          const style = getCardStyle(offset, compact);
+        {flat ? <OpenInFull sx={{ fontSize: 20 }} /> : <CloseFullscreen sx={{ fontSize: 20 }} />}
+      </IconButton>
+    </Box>
+  );
 
-          return (
+  if (flat) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: EASING, delay: 0.08 }}
+      >
+        {toolbar}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "min(450px, calc(100vw - 32px))" }}>
+          {cards.map((card) => (
             <motion.div
               key={card.title}
-              animate={{ y: style.y, scale: style.scale, opacity: style.opacity, rotateX: style.rotateX, zIndex: style.zIndex }}
-              transition={{ duration: 0.5, ease: EASING }}
-              style={{ position: "absolute", width: "100%", height: CARD_HEIGHT, top: topPad, transformStyle: "preserve-3d", transformOrigin: "center center" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: EASING }}
             >
               <Box
                 sx={{
-                  width: "100%", height: "100%", borderRadius: 3,
+                  borderRadius: 3,
                   backgroundColor: theme.palette.background.paper,
                   border: `1px solid ${theme.palette.divider}`,
-                  boxShadow: offset === 0 ? "0 8px 30px rgba(0,0,0,0.12)" : "0 4px 20px rgba(0,0,0,0.08)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                   display: "flex", flexDirection: "column", overflow: "hidden",
                 }}
               >
@@ -223,21 +239,54 @@ export default function Rolodex() {
                 <CardContent card={card} theme={theme} />
               </Box>
             </motion.div>
-          );
-        })}
+          ))}
+        </Box>
       </motion.div>
+    );
+  }
 
-      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", flexShrink: 0, height: CARD_HEIGHT, marginTop: "24px" }}>
-        <IconButton onClick={() => flip(-1)} disabled={atStart} size="small"
-          sx={{ color: theme.palette.text.secondary, opacity: atStart ? 0.2 : 0.6, "&:hover": { opacity: atStart ? 0.2 : 1 } }}>
-          <KeyboardArrowUp />
-        </IconButton>
-        <IconButton onClick={() => flip(1)} disabled={atEnd} size="small"
-          sx={{ color: theme.palette.text.secondary, opacity: atEnd ? 0.2 : 0.6, "&:hover": { opacity: atEnd ? 0.2 : 1 } }}>
-          <KeyboardArrowDown />
-        </IconButton>
-      </Box>
-    </Box>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASING, delay: 0.08 }}
+    >
+    {toolbar}
+    <motion.div
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      animate={{ height: containerHeight }}
+      transition={{ duration: 0.5, ease: EASING }}
+      style={{ width: "min(450px, calc(100vw - 32px))", perspective: "1000px", position: "relative", overflow: "hidden", touchAction: "pan-x" }}
+    >
+      {cards.map((card, index) => {
+        const offset = index - activeIndex;
+        const style = getCardStyle(offset, compact);
+
+        return (
+          <motion.div
+            key={card.title}
+            animate={{ y: style.y, scale: style.scale, opacity: style.opacity, rotateX: style.rotateX, zIndex: style.zIndex }}
+            transition={{ duration: 0.5, ease: EASING }}
+            style={{ position: "absolute", width: "100%", height: CARD_HEIGHT, top: topPad, transformStyle: "preserve-3d", transformOrigin: "center center" }}
+          >
+            <Box
+              sx={{
+                width: "100%", height: "100%", borderRadius: 3,
+                backgroundColor: theme.palette.background.paper,
+                border: `1px solid ${theme.palette.divider}`,
+                boxShadow: offset === 0 ? "0 8px 30px rgba(0,0,0,0.12)" : "0 4px 20px rgba(0,0,0,0.08)",
+                display: "flex", flexDirection: "column", overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <CardHeader card={card} theme={theme} />
+              <CardContent card={card} theme={theme} />
+            </Box>
+          </motion.div>
+        );
+      })}
+    </motion.div>
     </motion.div>
   );
 }

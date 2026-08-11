@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Link, Dialog, DialogContent, IconButton, Box } from "@mui/material";
+import { Grid, Typography, Link, Dialog, DialogContent, IconButton, Box, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { Close } from "@mui/icons-material";
 
@@ -17,6 +17,7 @@ const store = proxy({
 
 export default function Home() {
   const state = useProxy(store);
+  const canHover = useMediaQuery("(hover: hover)");
   const [aboutOpen, setAboutOpen] = useState(false);
   const [sunHovered, setSunHovered] = useState(false);
   const [bustFlipping, setBustFlipping] = useState(false);
@@ -25,9 +26,9 @@ export default function Home() {
   return (
     <Layout>
       <Grid container sx={{ padding: { xs: 2, md: 4 }, maxWidth: 800, justifyContent: { xs: "center", md: "flex-start" } }} spacing={{ xs: 0, md: 2 }}>
-        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: { xs: "center", md: "flex-start" } }}>
+        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", position: { md: "sticky" }, top: { md: 32 }, alignSelf: "flex-start" }}>
           <MotionBlurb open={state.open}>
-            <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
+            <Grid container sx={{ justifyContent: "flex-start" }}>
               <Grid item>
                 <Box
                   component={motion.div}
@@ -48,13 +49,14 @@ export default function Home() {
                   />
                 </Box>
               </Grid>
-              <Grid item sx={{ textAlign: { xs: "center", md: "left" } }}>
+              <Grid item sx={{ textAlign: "left" }}>
                 <Typography variant="h1" sx={{ fontSize: "2.8em", letterSpacing: "-2.0px" }}>
                   {"Mason "}
                   <Box
                     component="span"
-                    onMouseEnter={() => setSunHovered(true)}
-                    onMouseLeave={() => setSunHovered(false)}
+                    onMouseEnter={canHover ? () => setSunHovered(true) : undefined}
+                    onMouseLeave={canHover ? () => setSunHovered(false) : undefined}
+                    onClick={!canHover ? () => setSunHovered((prev) => !prev) : undefined}
                     sx={{
                       display: "inline-block",
                       position: "relative",
@@ -112,7 +114,8 @@ export default function Home() {
                       color: "#1a4d8f",
                       cursor: "pointer",
                       verticalAlign: "baseline",
-                      "&:hover": { color: "#0d3468" },
+                      "@media (hover: hover)": { "&:hover": { color: "#0d3468" } },
+                      "&:active": { color: "#0d3468" },
                     }}
                   >
                     {"About →"}
@@ -148,8 +151,8 @@ export default function Home() {
           <Close fontSize="small" />
         </IconButton>
         <DialogContent sx={{ p: 4 }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-            <img src="illustrations/bust-2.svg" height="220" />
+          <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1.5, sm: 3 }, flexDirection: { xs: "column", sm: "row" } }}>
+            <Box component="img" src="illustrations/bust-2.svg" sx={{ height: { xs: 160, sm: 220 } }} />
             <Box>
               <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.2 }}>
                 10+ years of experience in data science and machine learning.
