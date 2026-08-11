@@ -19,8 +19,19 @@ import {
 } from "@react-three/drei";
 
 // @ts-ignore
+function InitialCameraAngle({ controlsRef }) {
+  useEffect(() => {
+    if (controlsRef.current) {
+      controlsRef.current.rotateTo(Math.PI / 2.75, Math.PI / 2.5, false);
+    }
+  }, []);
+  return null;
+}
+
+// @ts-ignore
 function AquariumWithoutSpheres({ spheres }) {
   const theme = useTheme();
+  const cameraControlsRef = useRef<any>(null);
   return (
     <Canvas
       shadows
@@ -86,11 +97,11 @@ function AquariumWithoutSpheres({ spheres }) {
           />
         </group>
       </Environment>
+      <InitialCameraAngle controlsRef={cameraControlsRef} />
       <CameraControls
+        ref={cameraControlsRef}
         truckSpeed={0}
         dollySpeed={0}
-        azimuthAngle={Math.PI / 3}
-        polarAngle={Math.PI / 2}
         minPolarAngle={0}
         maxPolarAngle={Math.PI / 2}
       />
@@ -164,14 +175,14 @@ export default function GlassBox() {
     <AquariumWithoutSpheres
       spheres={[
         [0.75, "lightblue", 0.1, [-4, 2, -2]],
+        [1.00, "skyblue", 0.3, [-4, 2, -4]],
         [1.25, "aquamarine", 0.2, [4, -3, 2]],
-        [1.5, "lightblue", 0.3, [-4, -2, -3]],
-        [2, "pink", 0.3, [-4, 2, -4]],
-        [2, "skyblue", 0.3, [-4, 2, -4]],
-        [2, "lightblue", 0.1, [-4, 2, -2]],
-        [1.5, "pink", 0.2, [4, -3, 2]],
         [1.25, "aquamarine", 0.3, [-4, -2, -3]],
-        [1, "skyblue", 0.3, [-4, 2, -4]],
+        [1.50, "lightblue", 0.3, [-4, -2, -3]],
+        [1.50, "pink", 0.2, [4, -3, 2]],
+        [1.75, "pink", 0.3, [-4, 2, -4]],
+        [1.75, "skyblue", 0.3, [-4, 2, -4]],
+        [1.75, "lightblue", 0.1, [-4, 2, -2]],
       ]}
     />
   );

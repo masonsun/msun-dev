@@ -1,11 +1,18 @@
 import React from "react";
 import NextLink from "next/link";
 import dynamic from "next/dynamic";
-import { Box, IconButton } from "@mui/material";
+import { Box, CircularProgress, IconButton } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 
 import Layout from "../layout/Layout";
-const GlassBox = dynamic(() => import("../components/GlassBox"), { ssr: false });
+const GlassBox = dynamic(() => import("../components/GlassBox"), {
+  ssr: false,
+  loading: () => (
+    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+      <CircularProgress size={48} sx={{ color: "text.secondary" }} />
+    </Box>
+  ),
+});
 
 export default function Sandbox() {
   return (

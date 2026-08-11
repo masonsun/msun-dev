@@ -25,10 +25,11 @@ export default function Home() {
 
   return (
     <Layout>
-      <Grid container sx={{ padding: { xs: 2, md: 4 }, maxWidth: 800, justifyContent: { xs: "center", md: "flex-start" } }} spacing={{ xs: 0, md: 2 }}>
+      <Box sx={{ maxWidth: 600, mx: "auto" }}>
+      <Grid container sx={{ padding: { xs: 2, md: 4 }, pt: { xs: 4, md: 4 }, justifyContent: { xs: "center", md: "flex-start" } }} spacing={{ xs: 0, md: 2 }}>
         <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", position: { md: "sticky" }, top: { md: 32 }, alignSelf: "flex-start" }}>
           <MotionBlurb open={state.open}>
-            <Grid container sx={{ justifyContent: "flex-start" }}>
+            <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
               <Grid item>
                 <Box
                   component={motion.div}
@@ -49,7 +50,7 @@ export default function Home() {
                   />
                 </Box>
               </Grid>
-              <Grid item sx={{ textAlign: "left" }}>
+              <Grid item sx={{ textAlign: { xs: "center", md: "left" } }}>
                 <Typography variant="h1" sx={{ fontSize: "2.8em", letterSpacing: "-2.0px" }}>
                   {"Mason "}
                   <Box
@@ -130,6 +131,7 @@ export default function Home() {
           <Rolodex />
         </Grid>
       </Grid>
+      </Box>
 
       <Dialog
         open={aboutOpen}

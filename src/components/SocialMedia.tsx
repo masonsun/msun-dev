@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { Box, IconButton, Tooltip, useTheme } from "@mui/material";
+import { useRouter } from "next/router";
 import mediaData from "../config/media.json";
 const { socialMedia } = mediaData;
 
@@ -69,12 +70,14 @@ function LongPressTooltip({ title, disabled, children }: { title: string; disabl
 
 export default function SocialMedia() {
   const theme = useTheme();
+  const router = useRouter();
   return (
     <Box
       sx={{
         position: "relative",
         width: 230,
         height: 240,
+        mx: { xs: "auto", md: 0 },
       }}
     >
       {socialMedia.map((item, i) => {
@@ -91,8 +94,9 @@ export default function SocialMedia() {
             <LongPressTooltip title={item.title} disabled={item.disabled}>
               <IconButton
                 {...(item.disabled ? {} : {
-                  href: item.href,
-                  ...(item.href.startsWith("http") || item.href.startsWith("mailto") ? { target: "_blank" } : {}),
+                  ...(item.href.startsWith("http") || item.href.startsWith("mailto")
+                    ? { href: item.href, target: "_blank" }
+                    : { onClick: () => router.push(item.href) }),
                 })}
                 disableRipple
                 sx={{

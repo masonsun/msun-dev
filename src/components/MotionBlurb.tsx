@@ -30,6 +30,7 @@ const MotionBlurb = ({ children, open }) => {
       variants={ListVariants}
       initial="hidden"
       animate={open ? "visible" : "hidden"}
+      style={{ width: "100%", margin: 0, padding: 0, listStyle: "none" }}
     >
       {Children.map(children, (child) => (
         <motion.div variants={ListItemVariants}>{child}</motion.div>

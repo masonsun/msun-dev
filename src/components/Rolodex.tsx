@@ -181,7 +181,7 @@ export default function Rolodex() {
 
   const adjScale = compact ? SCALES.smAdjacent : SCALES.adjacent;
   const adjY = CARD_HEIGHT / 2 + VISUAL_GAP + (CARD_HEIGHT * adjScale) / 2;
-  const topPad = atStart ? (compact ? 24 : 12) : adjY * 0.15 + 24;
+  const topPad = atStart ? (compact ? 16 : 12) : adjY * 0.15 + 24;
   const containerHeight = compact
     ? (atStart ? CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP + 12 : adjY * 0.15 + CARD_HEIGHT + CARD_HEIGHT * adjScale * 0.5 + VISUAL_GAP)
     : (atStart ? CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 60
