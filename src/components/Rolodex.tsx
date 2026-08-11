@@ -188,7 +188,7 @@ export default function Rolodex() {
         : adjY * 0.15 + CARD_HEIGHT + adjY + (CARD_HEIGHT * adjScale) / 2 + SECOND_GAP + (CARD_HEIGHT * SCALES.second) / 2 + 48);
 
   const toolbar = (
-    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "min(450px, calc(100vw - 32px))", mb: flat ? 0.5 : 0, position: "relative", zIndex: 10 }}>
+    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "min(450px, 100%, calc(100vw - 32px))", mb: flat ? 0.5 : 0, position: "relative", zIndex: 10 }}>
       {!flat ? (
         <Box sx={{ display: "flex", gap: 0 }}>
           <IconButton onClick={() => flip(-1)} disabled={atStart}

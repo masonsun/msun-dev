@@ -25,9 +25,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <Box sx={{ maxWidth: 600, mx: "auto" }}>
-      <Grid container sx={{ padding: { xs: 2, md: 4 }, pt: { xs: 4, md: 4 }, justifyContent: { xs: "center", md: "flex-start" } }} spacing={{ xs: 0, md: 2 }}>
-        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", position: { md: "sticky" }, top: { md: 32 }, alignSelf: "flex-start" }}>
+      <Box sx={{ maxWidth: { xs: 600, md: 750 }, mx: "auto", px: { xs: 2, md: 4 }, pt: { xs: 4, md: 4 } }}>
+      <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
+        <Grid item xs={12} md={5} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", position: { md: "sticky" }, top: { md: 32 }, alignSelf: "flex-start" }}>
           <MotionBlurb open={state.open}>
             <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
               <Grid item>
@@ -127,7 +127,7 @@ export default function Home() {
             </Grid>
           </MotionBlurb>
         </Grid>
-        <Grid item xs={12} md={6} sx={{ display: "flex", alignItems: "flex-start", justifyContent: { xs: "center", md: "flex-start" } }}>
+        <Grid item xs={12} md={7} sx={{ display: "flex", alignItems: "flex-start", justifyContent: { xs: "center", md: "flex-start" } }}>
           <Rolodex />
         </Grid>
       </Grid>
