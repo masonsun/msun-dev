@@ -8,7 +8,7 @@ import Layout from "../layout/Layout";
 const GlassBox = dynamic(() => import("../components/GlassBox"), {
   ssr: false,
   loading: () => (
-    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh" }}>
       <CircularProgress size={48} sx={{ color: "text.secondary" }} />
     </Box>
   ),
@@ -21,7 +21,7 @@ export default function Sandbox() {
         component={NextLink}
         href="/"
         sx={{
-          position: "absolute",
+          position: "fixed",
           top: 16,
           left: 16,
           zIndex: 1,

@@ -57,15 +57,17 @@ function ProjectTitle({ title, subtitle, theme, sx }: { title: string; subtitle?
 function CardsLayout({ card, theme }: { card: (typeof cards)[number]; theme: Theme }) {
   if (!card.projects) return null;
   return (
-    <Box sx={{ display: "flex", gap: 1.5, px: 2.5, pb: 2, flex: 1, minHeight: 0 }}>
-      {card.projects.map((project) => (
-        <Box key={project.projectTitle} sx={{ flex: 1, borderRadius: 2, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-          {project.image && (
-            <Box component="img" src={project.image} sx={{ width: "100%", aspectRatio: "4 / 3", objectFit: "cover", display: "block" }} />
-          )}
-          <ProjectTitle title={project.projectTitle} subtitle={project.projectSubtitle || undefined} theme={theme} sx={{ pl: 0, pr: 1, pt: 1, pb: 0.75 }} />
-        </Box>
-      ))}
+    <Box sx={{ mx: 2.5, mb: 1.5, display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", gap: 1, height: 120 }}>
+        {card.projects.map((project, i) => (
+          <Box key={i} sx={{ flex: 1, borderRadius: 2, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+            <Box component="img" src={project.image} sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          </Box>
+        ))}
+      </Box>
+      {card.projectTitle && (
+        <ProjectTitle title={card.projectTitle} subtitle={card.projectSubtitle || undefined} theme={theme} sx={{ pt: 1.5 }} />
+      )}
     </Box>
   );
 }
@@ -83,6 +85,7 @@ function SidebarLayout({ card, theme }: { card: (typeof cards)[number]; theme: T
             objectFit: card.showFullImage ? "contain" : "cover",
             objectPosition: "top",
             borderRadius: 2, display: "block", flexShrink: 0,
+            ...((card as any).imageShadow && { boxShadow: "0 4px 16px rgba(0,0,0,0.18)" }),
           }}
         />
       )}
@@ -97,7 +100,7 @@ function GalleryLayout({ card, theme }: { card: (typeof cards)[number]; theme: T
   if (!card.projects) return null;
 
   const title = card.projectTitle || card.projects.map((p) => p.projectTitle).join(" · ");
-  const subtitle = card.projectSubtitle || card.projects.map((p) => p.projectSubtitle).filter(Boolean).join(" · ") || undefined;
+  const subtitle = card.projectSubtitle || card.projects.map((p) => (p as any).projectSubtitle).filter(Boolean).join(" · ") || undefined;
 
   return (
     <Box sx={{ mx: 2.5, mb: 1.5, display: "flex", flexDirection: "column" }}>
@@ -113,7 +116,7 @@ function GalleryLayout({ card, theme }: { card: (typeof cards)[number]; theme: T
             {project.image ? (
               <Box component="img" src={project.image} sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             ) : (
-              <ProjectTitle title={project.projectTitle} subtitle={project.projectSubtitle} theme={theme} />
+              <ProjectTitle title={project.projectTitle} subtitle={(project as any).projectSubtitle} theme={theme} />
             )}
           </Box>
         ))}

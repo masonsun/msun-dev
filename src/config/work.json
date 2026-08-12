@@ -8,7 +8,7 @@
       "url": "https://tech.facebook.com/reality-labs/",
       "layout": "gallery",
       "projectTitle": "Reality Labs Insights",
-      "projectSubtitle": "To be updated...",
+      "projectSubtitle": "Used data to shape strategy, elevate product quality, and drive growth across Wearables and VR.",
       "projects": [
         { "projectTitle": "Wearables", "image": "imgs/meta_glasses_crop.jpg" },
         { "projectTitle": "VR", "image": "imgs/meta_quest_panels_crop.jpg" }
@@ -22,7 +22,7 @@
       "url": "https://www.sofi.com/",
       "layout": "sidebar",
       "projectTitle": "Experimentation and MLOps",
-      "projectSubtitle": "To be updated...",
+      "projectSubtitle": "Built systems and practices that scaled experimentation and machine learning across SoFi, strengthening data science and accelerating product development.",
       "image": "imgs/sofi_app.png",
       "showFullImage": true
     },
@@ -31,25 +31,28 @@
       "role": "Applied Science",
       "date": "2017 – 2021",
       "logo": "logos/amazon.jpg",
-      "url": "https://www.amazon.com/",
+      "url": "https://www.amazon.science/",
       "layout": "cards",
+      "projectTitle": "Customer-obsessed science™",
+      "projectSubtitle": "Delivered ML solutions across Retail, Fulfillment, and Alexa, improving customer experiences for 100M+ Prime members.",
       "projects": [
-        { "projectTitle": "Inventory Control", "projectSubtitle": "To be updated...", "image": "imgs/amazon_fba.jpg" },
-        { "projectTitle": "Alexa", "projectSubtitle": "To be updated...", "image": "imgs/amazon_alexa_puck.jpg" },
-        { "projectTitle": "Middle Mile Tech", "projectSubtitle": "To be updated...", "image": "imgs/amazon_yard_cv.jpg" }
+        { "image": "imgs/amazon_fba.jpg" },
+        { "image": "imgs/amazon_echo_gen2.jpg" },
+        { "image": "imgs/amazon_yard_cv.jpg" }
       ]
     },
     {
       "title": "KPMG",
-      "role": "Analytics",
+      "role": "Data Science",
       "date": "2015",
       "logo": "logos/kpmg.jpg",
       "url": "https://kpmg.com/",
       "layout": "sidebar",
       "projectTitle": "CRM Analytics",
-      "projectSubtitle": "To be updated...",
+      "projectSubtitle": "Delivered customer insights by day, Xerox copies by necessity.",
       "image": "imgs/analytics_stock_crop.jpg",
-      "imageWidth": "28%"
+      "imageWidth": "28%",
+      "imageShadow": true
     }
   ]
 }
