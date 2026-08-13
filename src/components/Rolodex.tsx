@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import workData from "../config/work.json";
 const { cards } = workData;
 
-const CARD_HEIGHT = 280;
+const CARD_HEIGHT = 300;
 const VISUAL_GAP = 10;
 const SECOND_GAP = 4;
 

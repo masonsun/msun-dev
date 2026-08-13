@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Box sx={{ maxWidth: { xs: 600, md: 750 }, mx: "auto", px: { xs: 2, md: 4 }, pt: { xs: 4, md: 4 } }}>
+      <Box sx={{ maxWidth: { xs: 600, md: 750 }, mx: "auto", px: { xs: 2, md: 4 }, pt: { xs: 4, md: 4 }, pb: { xs: 12, md: 0 } }}>
       <Grid container sx={{ justifyContent: { xs: "center", md: "flex-start" } }}>
         <Grid item xs={12} md={5} sx={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-start", position: { md: "sticky" }, top: { md: 32 }, alignSelf: "flex-start" }}>
           <MotionBlurb open={state.open}>
